@@ -4,6 +4,7 @@ import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.Selenide;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 
 import java.time.Duration;
@@ -41,6 +42,9 @@ public class CardDeliveryTest {
         $("[data-test-id='notification'] .notification__title")
                 .shouldHave(Condition.text("Успешно!"), Duration.ofSeconds(15))
                 .shouldBe(visible);
-        $("[data-test-id='date'] .input__control").shouldHave(Condition.exactValue("04.09.2025"));
+        $("[data-test-id='notification'] .notification__content")
+                .shouldHave(Condition.text("Встреча успешно забронирована на " + planningDate), Duration.ofSeconds(15))
+                .shouldBe(visible);
     }
+
 }
